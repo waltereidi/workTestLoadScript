@@ -1,8 +1,13 @@
-import ReCaptcha from "./reCaptcha"
+import ReCaptcha from "./ReCaptchaAdapter"
 
 export default class googleReCaptcha_v2 extends ReCaptcha
 {
-    constructor(  ){
+    constructor( elementId ){
         this.super("body" , alert() , alert())
     }
+
+    init(){
+
+    }
+    
 }
