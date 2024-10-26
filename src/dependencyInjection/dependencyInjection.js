@@ -1,5 +1,7 @@
 
-export default class DependencyInjection{
+
+export default class DependencyInjection 
+{
 //** responsabilities:
 //** Give the control of an object to another 
 //** parameters on service request would increase flexibility 
@@ -8,8 +10,10 @@ export default class DependencyInjection{
 //**? (OCP) Open and Close Principle
 
 getLogger(){
-    const SimpleLogger = require('./simpleLogger.js')
-    return new SimpleLogger(); 
+    const SimpleLogger = require('@/dependencyInjection/simpleLogger')
+    
+    
+    return SimpleLogger;
 }
 //*** overload
 // getLogger(param){
