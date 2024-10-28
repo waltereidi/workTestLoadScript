@@ -1,6 +1,5 @@
-import IDependencyInjection from './iDependencyInjection.js';
 
-export default class IDependencyInjection 
+export class IDependencyInjection 
 {
 
     constructor(){

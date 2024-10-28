@@ -1,5 +1,6 @@
-import IDependencyInjection from './iDependencyInjection.js';
-export default class SimpleLogger extends IDependencyInjection
+import { IDependencyInjection } from "./iDependencyInjection"
+
+export class SimpleLogger extends IDependencyInjection
 {    
     constructor(){
         super()
@@ -24,7 +25,7 @@ export default class SimpleLogger extends IDependencyInjection
      * Find if theres an error logged 
      */ 
     hasError = () => this.log
-        .find(x=>x.success === false ).length == null
+        .find(x=>x.success === false )?.length == null
     
      /**
      * get entireLog sorted by Id 

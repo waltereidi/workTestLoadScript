@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import DependencyInjection from '@/dependencyInjection/dependencyInjection'
+import {DependencyInjection} from '@/dependencyInjection/dependencyInjection'
 
 const di = new DependencyInjection(); 
 

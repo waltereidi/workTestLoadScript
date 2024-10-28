@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import SimpleLogger from '@/dependencyInjection/simpleLogger.js'
+import { SimpleLogger } from '@/dependencyInjection/simpleLogger.js'
 
 test('add log returns has error when add success false log', () => {
     var logger = new SimpleLogger();

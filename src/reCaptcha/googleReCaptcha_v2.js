@@ -1,19 +1,21 @@
-import ReCaptcha from "./ReCaptchaAdapter"
+import {ReCaptchaAdapter} from "./ReCaptchaAdapter"
 
-export default class googleReCaptcha_v2 extends ReCaptcha
+export  class GoogleReCaptcha_v2 extends ReCaptchaAdapter
 {
     constructor( elementId ){
-        this.super("body" , alert() , alert())
-        this.parentElement = elementId
+       super()
     }
-    parentElement;
-    renderFunction(){
-
+    
+    init(){
+        super.setupAdapter(this.renderFunction , this.getResultFunction , this.destroyFunction )
+    }
+    renderFunction = ()=>{
+        console.log(1)
     }
     getResultFunction(){
-
+        console.log(1)
     }
     destroyFunction(){
-
+        console.log(1)
     }
 }

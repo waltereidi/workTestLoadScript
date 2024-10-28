@@ -1,6 +1,6 @@
+import { SimpleLogger, SimpleLogger } from './simpleLogger.js';
 
-
-export default class DependencyInjection 
+export class DependencyInjection 
 {
 //** responsabilities:
 //** Give the control of an object to another 
@@ -10,10 +10,10 @@ export default class DependencyInjection
 //**? (OCP) Open and Close Principle
 
 getLogger(){
-    const SimpleLogger = require('@/dependencyInjection/simpleLogger')
+    const simpleLogger = new SimpleLogger()
     
     
-    return SimpleLogger;
+    return simpleLogger;
 }
 //*** overload
 // getLogger(param){
