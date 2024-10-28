@@ -30,16 +30,18 @@ export class ReCaptchaAdapter
         },
         {
           get: function (obj, prop) {
-            console.log('get')
+            obj.logger.addLog( true , "get result function requested" , "action" );
+            
             return obj[prop];
           },
           set: function (obj, prop, value) {
             if(prop != 'action')    
                 return false ; 
 
-            if(typeof(prop) != 'function' )
+            if(typeof(value) != 'function' )
             {
                 obj.logger.addLog(false , "Invalid parameter type from getResult function" , "contructor")
+                return false;
             }
             
             obj.logger.addLog( true , "getResult function added" , "constructor" );
@@ -58,20 +60,21 @@ export class ReCaptchaAdapter
         },
         {
           get: function (obj, prop) {
-            console.log('get')
+            obj.logger.addLog( true , "getResult function requested" , "action" );
             return obj[prop];
           },
           set: function (obj, prop, value) {
             if(prop != 'action')    
                 return false ; 
-            if(typeof(prop) != 'function' )
+
+            if(typeof(value) != 'function' )
             {
                 obj.logger.addLog(false , "Invalid parameter type from render function" , "contructor")
-                return false; 
+                return false;
             }
-                
-            obj.logger.addLog( true , "Render function added" , "constructor" );
-
+            
+            obj.logger.addLog( true , "render function added" , "constructor" );
+            
             obj[prop] = value;
             return true;
           },
@@ -83,25 +86,26 @@ export class ReCaptchaAdapter
           logger: this.logger
         },
         {
-          get: function (obj, prop) {
-            console.log('get')
+          get: function (obj, prop ) {
+            
+            obj.logger.addLog( true , "destroy function requested" , "action" );
+
             return obj[prop];
           },
           set: function (obj, prop, value) {
             if(prop != 'action')    
                 return false ; 
-
-            if(typeof(prop) != 'function' )
+            if(typeof(value) != 'function' )
             {
-                obj.logger.addLog(false , "Invalid parameter type from destroy function" , "contructor")
-                return false; 
+                obj.logger.addLog(false , "Invalid parameter type destroy function" , "contructor")
+                return false;
             }
-                
-            obj.logger.addLog( true , "Destroy function added" , "constructor" );
+            
+            obj.logger.addLog( true , "destroy function added" , "constructor" );
             
             obj[prop] = value;
             return true;
-          },
+          }
         },
       );
 }

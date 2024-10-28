@@ -1,7 +1,6 @@
+import {ReCaptchaAdapter} from "./ReCaptchaAdapter"
 
-import { ReCaptchaAdapter } from "./ReCaptchaAdapter"
-
-export default class GoogleReCaptcha_v3 extends ReCaptchaAdapter
+export class GoogleReCaptcha_v3 extends ReCaptchaAdapter
 {
     constructor(  ){
         super("body" , alert() , alert())

@@ -5,6 +5,8 @@ export default defineConfig({
     alias: {
       '@/': './src/', 
       '@/': new URL('./src/', import.meta.url).pathname, 
+      'root/': './', 
+      'root/': new URL('./', import.meta.url).pathname, 
     }
   }
 })

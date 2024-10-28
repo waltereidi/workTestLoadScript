@@ -15,6 +15,15 @@ getLogger(){
     
     return simpleLogger;
 }
+getKeyVault(){
+
+}
+
+getKeyVault = ( param ) => this
+    .getKeyVault()
+    .find(x=>x.key == param) ?? undefined
+    
+
 //*** overload
 // getLogger(param){
 //     const ComplexLogger = require('./simpleLogger.js')
