@@ -41,7 +41,6 @@ export class SimpleLogger extends IDependencyInjection
             .filter(x=> x.success == false || x.severity != null )
             .sort((prev , next) => prev.id )
         }
-            
     }
-        
+    
 }

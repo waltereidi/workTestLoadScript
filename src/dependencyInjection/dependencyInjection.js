@@ -1,3 +1,4 @@
+import { KeyVault } from './keyVault.js';
 import { SimpleLogger, SimpleLogger } from './simpleLogger.js';
 
 export class DependencyInjection 
@@ -9,20 +10,25 @@ export class DependencyInjection
 //**? (IOC) Inversion of Control
 //**? (OCP) Open and Close Principle
 
+/**
+ * An instanced object from class 
+ * @returns @instance SimpleLogger
+ */
 getLogger(){
     const simpleLogger = new SimpleLogger()
     
     
     return simpleLogger;
 }
+/**
+ * An instanced object from class 
+ * @returns @instance KeyVault
+ */
 getKeyVault(){
-
+    const keyVault = new KeyVault()
+    return keyVault;
 }
 
-getKeyVault = ( param ) => this
-    .getKeyVault()
-    .find(x=>x.key == param) ?? undefined
-    
 
 //*** overload
 // getLogger(param){

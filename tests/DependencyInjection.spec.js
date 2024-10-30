@@ -8,3 +8,9 @@ test('return a instance of simpleLogger class', () => {
 
     expect( simpleLogger.smokeTest() ).toBe(true)
 })
+
+test('return a instance of keyVault class', () => {
+    var simpleLogger = di.getKeyVault()
+
+    expect( simpleLogger.smokeTest() ).toBe(true)
+})
