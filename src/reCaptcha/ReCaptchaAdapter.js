@@ -11,8 +11,13 @@ export class ReCaptchaAdapter
 {
     constructor()
     {
-        
     }
+    /**
+     * SetupAdaper must be called right after super() from inherited classes
+     * @param {*} renderFunction 
+     * @param {*} getResultFunction 
+     * @param {*} destroyFunction 
+     */
     setupAdapter(renderFunction , getResultFunction , destroyFunction){
         this.logger.addLog(true , "adapter setup started" , "starter function")
         this.getResult.action = getResultFunction; 

@@ -49,7 +49,11 @@ export class KeyVault extends IDependencyInjection
     {
         return this.LocalKeyVault.find(x=>x.key === key).value
     }
-
-    getIn = (...keys) => this.LocalKeyVault.filter(x=> keys.includes(x.key))
+    /**
+     * example call getIn('p1' , 'p2', 'p3' )
+     * @param  {...any} keys 
+     * @returns Array of Object
+     */
+    getIn = (...keys) => this.LocalKeyVault.filter(x=>keys.includes(x.key))
 
 }
