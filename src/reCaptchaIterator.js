@@ -1,9 +1,9 @@
-import { GoogleReCaptcha_v2 } from "@/reCaptcha/googleReCaptcha_v2";
+import { GoogleReCaptcha_v2 } from "@/reCaptcha/googleReCaptcha_v2.js";
 
-export default class ReCaptchaIterator
+export  class ReCaptchaIterator
 {
-    current_reCaptcha = null 
     localRecaptchaElement = null
+    v2 = null
     constructor(element){
         this.localRecaptchaElement = element
     }
@@ -11,7 +11,7 @@ export default class ReCaptchaIterator
     {   
         switch(reCaptcha_selector)
         {
-            case 'v2' : this.current_reCaptcha = new GoogleReCaptcha_v2(this.localRecaptchaElement)
+            case 'v2' : this.v2 = new GoogleReCaptcha_v2(this.localRecaptchaElement);this.current_reCaptcha.action = this.v2;break;
         }
         
     }
@@ -39,7 +39,7 @@ export default class ReCaptchaIterator
             if(prop != 'action')    
                 return false ; 
 
-            value.super.initialize.action();
+            value.initialize.action();
             
             obj[prop] = value;
             return true;

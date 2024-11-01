@@ -1,5 +1,5 @@
 import { KeyVault } from './keyVault.js';
-import { SimpleLogger, SimpleLogger } from './simpleLogger.js';
+import { SimpleLogger } from './simpleLogger.js';
 
 export class DependencyInjection 
 {

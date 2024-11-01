@@ -1,4 +1,4 @@
-import {ReCaptchaAdapter} from "./ReCaptchaAdapter"
+import { ReCaptchaAdapter } from "@/reCaptcha/reCaptchaAdapter"
 import { DependencyInjection } from "@/dependencyInjection/dependencyInjection"
 
 export class GoogleReCaptcha_v2 extends ReCaptchaAdapter
@@ -12,7 +12,7 @@ export class GoogleReCaptcha_v2 extends ReCaptchaAdapter
      */
     constructor( element ){
         super()
-        this.renderElement = element
+        this.renderElement = document.getElementById(element)
        
        if(this.renderElement == null)
             throw new Error('invalid elementId')    
@@ -24,8 +24,10 @@ export class GoogleReCaptcha_v2 extends ReCaptchaAdapter
     }
 
     renderFunction(){
-        const localReCaptcha = this.renderElement.createElement('div');
-        localReCaptcha.setAttribute('id', 'localReCaptchaV2');
+        const child = document.createElement('div');
+        child.setAttribute('id', 'localReCaptchaV2');
+
+        const localReCaptcha = this.renderElement.appendChild(child)
 
         grecaptcha.render(localReCaptcha.id , {
             'sitekey' : '6LfmZ2oqAAAAAOtf5-DrKGua0PHoJxLv2kx4tq9y',

@@ -9,5 +9,10 @@ export default defineConfig({
   server: {
     port: 5173, // Porta do servidor de desenvolvimento (opcional)
     open: true, // Abre o navegador automaticamente (opcional)
+  }, 
+  resolve: {
+    alias: [
+      { find: '@', replacement: path.resolve(__dirname, 'src') },
+    ],
   },
 });
