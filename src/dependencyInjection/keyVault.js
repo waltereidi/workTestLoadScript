@@ -21,7 +21,7 @@ export class KeyVault extends IDependencyInjection
             },
             {
                 key : "reCaptchaV3_publicKey",
-                value:"6LfmZ2oqAAAAAOtf5-DrKGua0PHoJxLv2kx4tq9y"
+                value:"6LfeZ2oqAAAAAHlSDu7vpFkRdKcG0Zf735gt91cK"
             },
             {
                 key : "reCaptchaV3_siteKey",

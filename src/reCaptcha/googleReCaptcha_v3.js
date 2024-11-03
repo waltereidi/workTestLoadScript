@@ -1,9 +1,18 @@
-import {ReCaptchaAdapter} from "./ReCaptchaAdapter"
-
-export class GoogleReCaptcha_v3 extends ReCaptchaAdapter
+export class GoogleReCaptcha_v3
 {
+    definitions = {
+        di : new DependencyInjection(),
+        siteKey : null ,
+        localReCaptchaId:()=>'localReCaptchaV2', 
+        resultAttr: () => 'data-attr-result', 
+    }
+
     constructor(  ){
-        super("body" , alert() , alert())
+        this.siteKey = this.definitions.di
+        .getKeyVault()
+        .getByKey('reCaptchaV3_siteKey');
+
+        this.renderFunction(element)
     }
     
 }

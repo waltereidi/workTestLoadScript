@@ -1,9 +1,9 @@
 import { GoogleReCaptcha_v2 } from "@/reCaptcha/googleReCaptcha_v2.js";
+import { GoogleReCaptcha_v3 } from "@/reCaptcha/googleReCaptcha_v3.js";
 
 export  class ReCaptchaIterator
 {
     localRecaptchaElement = null
-    v2 = null
     constructor(element){
         this.localRecaptchaElement = element
     }
@@ -11,39 +11,18 @@ export  class ReCaptchaIterator
     {   
         switch(reCaptcha_selector)
         {
-            case 'v2' : this.v2 = new GoogleReCaptcha_v2(this.localRecaptchaElement);this.current_reCaptcha.action = this.v2;break;
+            case 'v2' : this.localRecaptchaElement = new GoogleReCaptcha_v2(this.localRecaptchaElement) ;break;
+            case 'v3' : this.localRecaptchaElement = new GoogleReCaptcha_v3(this.localRecaptchaElement) ;break;
         }
         
     }
     getResult()
     {
-        this.current_reCaptcha.super.getResult.action();
+        return this.localRecaptchaElement.getResultFunction()
     }
     destroy(){
-        
-        this.current_reCaptcha.super.destroy.action();
+        this.localRecaptchaElement.destroyFunction()
+        delete this.localRecaptchaElement;
     }
-
-    current_reCaptcha = new Proxy(
-        {
-          action: null,
-        },
-        {
-          get: function (obj, prop ) {
-            
-            obj.logger.addLog( true , "destroy function requested" , "action" );
-
-            return obj[prop];
-          },
-          set: function (obj, prop, value) {
-            if(prop != 'action')    
-                return false ; 
-
-            value.initialize.action();
-            
-            obj[prop] = value;
-            return true;
-          }
-        },
-      );
+    
 }

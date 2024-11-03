@@ -1,3 +1,4 @@
+//** DEPRECATED */
 //**? This contract ensures this class can be executed empirically
 //** Principles to achieve 
 //** the entire execution should be capable to be exchanged
@@ -9,6 +10,7 @@ import { DependencyInjection } from "@/dependencyInjection/dependencyInjection";
 
 export class ReCaptchaAdapter
 {
+    renderElement = null 
     constructor()
     {
     }
@@ -18,7 +20,8 @@ export class ReCaptchaAdapter
      * @param {*} getResultFunction 
      * @param {*} destroyFunction 
      */
-    setupAdapter(renderFunction , getResultFunction , destroyFunction){
+    setupAdapter(renderFunction , getResultFunction , destroyFunction , renderElement){
+        this.renderElement = renderElement
         this.logger.addLog(true , "adapter setup started" , "starter function")
         this.getResult.action = getResultFunction; 
         this.initialize.action = renderFunction;
