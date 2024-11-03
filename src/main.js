@@ -12,7 +12,7 @@ import {  ReCaptchaIterator } from './reCaptchaIterator.js'
             buttonGreen.clicked = true ; 
             
             console.log('coosin')
-            re.choose('v2');
+            re.choose('v3');
         },
         clicked : false ,
         bind : (button) => button.addEventListener('click' , ()=>{buttonGreen.action()}) , 

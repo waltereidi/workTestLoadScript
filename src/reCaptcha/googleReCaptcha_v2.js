@@ -14,7 +14,8 @@ export class GoogleReCaptcha_v2 {
      * @param {element_reference} element 
      */
     constructor( element ){
-        this.definitions.siteKey = this.definitions.di.getKeyVault()
+        this.definitions.siteKey = this.definitions.di
+            .getKeyVault()
             .getByKey('reCaptchaV2_siteKey');
         
         this.renderFunction(element)
@@ -32,7 +33,7 @@ export class GoogleReCaptcha_v2 {
             'sitekey' : this.definitions.siteKey,
             'callback' : (res )=>child.setAttribute( this.definitions.resultAttr() , res),
             'theme' : 'dark'
-          });
+            });
     }
 
     getResultFunction(){
