@@ -23,12 +23,15 @@ export class GoogleReCaptcha_v3
     renderFunction(elementId){
         const parentElement = document.getElementById(elementId)
         parentElement.setAttribute( this.definitions.attrSiteKey(), this.definitions.siteKey );
-        parentElement.setAttribute( this.definitions.attrCallBack(), 'setResultFunction' );
-        parentElement.setAttribute( this.definitions.attrAction(), 'click' );
+        parentElement.setAttribute( this.definitions.attrCallBack(), 'onSubmit' );
+        parentElement.setAttribute( this.definitions.attrAction(), 'submit' );
+        parentElement.setAttribute(  'class' , 'g-recaptcha' );
+        
     }
-
+   
     setResultFunction(token)
     {
+        alert(token)
         const local = document.getElementById(this.definitions.localReCaptchaId())
         local.setAttribute( this.definitions.attrResult(), token );
     }
@@ -42,7 +45,12 @@ export class GoogleReCaptcha_v3
     
     destroyFunction(){
         const local = document.getElementById(this.definitions.localReCaptchaId())
-        local.innerHTML = '';
+         
+
+        local.removeAttribute(this.definitions.attrAction)
+        local.removeAttribute(this.definitions.attrCallBack)
+        local.removeAttribute(this.definitions.attrResult)
+        local.removeAttribute(this.definitions.attrResult)
     }
 
-}
+} 

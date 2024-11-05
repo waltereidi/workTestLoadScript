@@ -2,8 +2,9 @@ import {  ReCaptchaIterator } from './reCaptchaIterator.js'
 
 
 (function(){
-    const parent = 'parent'
-    const re = new ReCaptchaIterator(parent)
+    const parentId = 'parent'
+    const inputSubmitId = 'gray'
+    const re = new ReCaptchaIterator( inputSubmitId , parentId)
 
     const buttonGreen ={
         action : () => {
@@ -11,12 +12,16 @@ import {  ReCaptchaIterator } from './reCaptchaIterator.js'
                 return
             buttonGreen.clicked = true ; 
             
-            console.log('coosin')
-            re.choose('v3');
+            console.log('load')
+            re.loadReCaptcha();
         },
         clicked : false ,
-        bind : (button) => button.addEventListener('click' , ()=>{buttonGreen.action()}) , 
+        bind : (button) =>{
+            button.addEventListener('click' , ()=>{buttonGreen.action()}) 
+            button.innerHTML = 'loadReCaptcha'
+        } 
     }
+   
     const buttonBlue ={
         action : () => {
             if(buttonBlue.clicked)
@@ -53,8 +58,16 @@ import {  ReCaptchaIterator } from './reCaptchaIterator.js'
     buttonRed.bind(document.getElementById('red'))
 
     buttonBlue.bind(document.getElementById('blue'))
-
+    document.getElementById('gray').addEventListener('click' , (e)=>{
+        e.preventDefault()
+        const form = document.getElementById('form')
+        const formData = new FormData(form)
+        for (const [key, value] of formData) {
+            console.log(`${key}: ${value}\n`);
+          }
+        alert()
+    }) 
+    
 })()
-
 
 

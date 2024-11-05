@@ -37,6 +37,13 @@
     <script type="module" src="./src/main.js"></script>
     <script src="https://www.google.com/recaptcha/api.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+      function onSubmit(token) {
+        console.log(token)
+        document.getElementById("demo-form").submit();
+      }
+
+    </script>
   </head>
   <body>
     <div id="app"></div>
@@ -44,9 +51,15 @@
     <div class="parent" id="parent"></div>
     <br/>
 
-    <button id="green" class="green">get response</button>
-    <button id="blue" class="blue">render v3</button>
-    <button id="red" class="red">render v2</button>
+    <button id="green" class="green"></button>
+    <button id="blue" class="blue"></button>
+    <button id="red" class="red"></button>
+    <form id="form">
+      <input type="hidden" name="test"/>
+      <button  data-sitekey="6LfeZ2oqAAAAAHlSDu7vpFkRdKcG0Zf735gt91cK"
+      data-callback='onSubmit' 
+      data-action='submit' class="g-recaptcha" id="gray">bt</button>
+    </form>
   </body>
   <style>
     .blue{

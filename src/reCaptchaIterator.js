@@ -3,19 +3,34 @@ import { GoogleReCaptcha_v3 } from "@/reCaptcha/googleReCaptcha_v3.js";
 
 export  class ReCaptchaIterator
 {
-    localRecaptchaElement = null
-    constructor(){
+    definitions = {
+        submitButtonId : null , 
+        renderElementId : null ,
+        recaptchaSequence : ['v3' , 'v2'] ,
+    }
+    
+    constructor( submitButtonId , renderElementId )
+    {
+        this.definitions.submitButtonId = submitButtonId 
+        this.definitions.renderElementId = renderElementId    
     }
 
-    //** notations , here an inversion of control happened since v3 needs an element to be intanced 
-    //** no longer this class is fully independent 
-    choose(reCaptcha_selector , element )
+    loadReCaptcha(){
+        const selector = this.getReCaptchaSelector();
+        this.choose(selector)
+    }
+    getReCaptchaSelector(){
+        if( this.definitions.recaptchaSequence.length == 1 ) 
+            return this.definitions.recaptchaSequence[0];
+        else 
+            return this.definitions.recaptchaSequence.shift();
+    }
+    choose(reCaptcha_selector)
     {   
-        this.localRecaptchaElement = element
-        switch(reCaptcha_selector , element )
+        switch(reCaptcha_selector)
         {
-            case 'v2' : this.localRecaptchaElement = new GoogleReCaptcha_v2(this.localRecaptchaElement) ;break;
-            case 'v3' : this.localRecaptchaElement = new GoogleReCaptcha_v3('blue') ;break;
+            case 'v2' : this.localRecaptchaElement = new GoogleReCaptcha_v2( this.definitions.recaptchaSequence ) ;break;
+            case 'v3' : this.localRecaptchaElement = new GoogleReCaptcha_v3(this.definitions.submitButtonId) ;break;
         }
         
     }
